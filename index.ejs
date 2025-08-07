@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #2473e0, #3a9bd5, #00d2ff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  background: linear-gradient(to bottom, #2e76da , #0e7f98);
+  width: 300px;
+  height: 40rem;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+}
+
+#forecast {
+  background: linear-gradient(to bottom, #2e76da , #47c8e5);
+  border-radius: 25px;
+  height: 8rem;
+  margin-top: 6rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+#H {
+  color: #e5e7e8;
+  padding-left: 1rem;
+  padding-top: .5rem;
+  text-align: end;
+  font-size: 1rem;
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  background-color: yellow;
+  border-radius: 50%;
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+}
+.sun {
+  width: 8rem;
+  height: 8rem;
+  background-color: yellow;
+  border-radius: 50%;
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+}
+.hour {
+  text-align: center;
+  font-size: 0.9rem;
+}
+#city-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.city-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.city-btn:hover {
+  background-color: #ddd;
+}
+@media (max-width: 600px) {
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #2473e0, #3a9bd5, #00d2ff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  background: linear-gradient(to bottom, #2e76da , #0e7f98);
+  width: 300px;
+  height: 30rem;
+  padding: 18px;
+  border-radius: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+}
+
+#forecast {
+  background: linear-gradient(to bottom, #2e76da , #47c8e5);
+  border-radius: 25px;
+  height: 5rem;
+  margin-top:1rem;
+  padding: 1.3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+#H {
+  color: #e5e7e8;
+  padding-left: 1rem;
+  padding-top: .5rem;
+  text-align: end;
+  font-size: 1rem;
+}
+.icon {
+  width: 19px;
+  height: 19px;
+  background-color: yellow;
+  border-radius: 50%;
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+}
+.sun {
+  width: 6rem;
+  height: 6rem;
+  background-color: yellow;
+  border-radius: 50%;
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+}
+.hour {
+  text-align: center;
+  font-size: 0.9rem;
+}
+#Riyadh{
+  padding-top: 1rem;
+}
+#all{
+  margin-top: -2rem;
+}
+
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+<div id="city-buttons">
+  <a href="/" class="city-btn">Riyadh</a>
+  <a href="/jeddah" class="city-btn">Jeddah</a>
+
+</div>
+
+<div >
+  <div id="all">
+    <h1 id="Riyadh"><%= city %></h1>
+
+    <h3><%= day %></h3>
+      <div class="sun"></div>
+
+    <h1><%= temp %>°</h1>
+    <h3><%= weatherstatus %></h3>
+   </div>
+
+    <div id="forecast">
+          <h3 id="H">Hourly Forecast</h3>
+      <% forecast.slice(0, 3).forEach(f => { %>
+        <div class="hour">
+          <div><%= new Date(f.time).toLocaleTimeString("en-US", { hour: "numeric", hour12: true }) %></div>
+          <div class="icon"></div>
+          <div><%= f.temperature %>°</div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>
