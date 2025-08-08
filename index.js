@@ -54,6 +54,7 @@ const fullDate = today.toLocaleDateString("en-US", options);
    const temps = hourlyResponse.data.hourly.temperature_2m;
     const times = hourlyResponse.data.hourly.time;
 const now = new Date();
+
     const hourlyData = times.map((time, index) => ({
       time,
       temperature: temps[index],
